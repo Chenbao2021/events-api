@@ -12,7 +12,7 @@ module.exports.saveEvent = async (req, res) => {
     eventModel
     .create(req.body)
     .then((data) => {
-        res.status(200).send("Document added to database")
+        res.status(200).send(data)
     })
 }
 
@@ -21,7 +21,7 @@ module.exports.updateEvent = async (req, res) => {
     eventModel
     .findByIdAndUpdate(req.body._id, req.body)
     .then((data) => {
-        res.status(201).send("Document modified successfully")
+        res.status(201).send(data)
     })
 }
 
@@ -31,7 +31,7 @@ module.exports.deleteEvent = async (req, res) => {
     eventModel
     .findByIdAndDelete(id)
     .then((data) => {
-        res.status(202).send("Document deleted successfully")
+        res.status(202).send(data)
     })
     .catch((err) => {
         res.status(404).end('Document not found')
