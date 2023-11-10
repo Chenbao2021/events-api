@@ -43,7 +43,6 @@ app.use(session({
         sameSite: 'none',
         secure: true,
         path: '/',
-        // httpOnly: true,
         maxAge: 60 * 60 * 24 * 1000,
         // rolling:true,//true在每次请求或刷新时强制设置cookie，将重置cookie的过期时间（默认false）
       },
