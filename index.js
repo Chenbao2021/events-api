@@ -29,8 +29,8 @@ app.use(bodyParse.json())
 
 app.use(cors({
     credentials: true,
-    origin: "https://yuchenbao.com",
-    // origin: "http://localhost:5174",
+    // origin: "https://yuchenbao.com",
+    origin: "http://localhost:5174",
     methods: ["POST", "GET",], 
 }))
 
