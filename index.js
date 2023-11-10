@@ -19,6 +19,19 @@ connectDB();
 
 
 const app = express()
+
+app.use(session({
+    secret: "234",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
+        // httpOnly: true, // 将Cookie设置为只能通过HTTP协议访问
+        // secure: true, // 仅在HTTPS连接中传输Cookie
+        // sameSite: 'none', // 允许跨站点访问
+      },
+}))
+
 app.use(bodyParse.json())
 
 // var corsOption = {
@@ -29,24 +42,13 @@ app.use(bodyParse.json())
 
 app.use(cors({
     credentials: true,
-    origin: "https://yuchenbao.com",
+    // origin: '*',
+    origin: ["https://yuchenbao.com", "http://localhost:5174"],
+    // origin: "https://yuchenbao.com",
     // origin: "http://localhost:5174",
-    methods: ["POST", "GET",], 
+    methods: ["POST", "GET", "OPTIONS"], 
 }))
 
-app.use(session({
-    secret: "itcas",
-    name: 'sessionId',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        sameSite: 'none',
-        // secure: true,
-        path: '/',
-        maxAge: 60 * 60 * 24 * 1000,
-        // rolling:true,//true在每次请求或刷新时强制设置cookie，将重置cookie的过期时间（默认false）
-      },
-}))
 
 // app.use('./save', (req, res, next) => {
 //     console.log("Middle ware, = ", req.session.user);
