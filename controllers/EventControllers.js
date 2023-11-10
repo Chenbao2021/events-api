@@ -1,7 +1,36 @@
 const eventModel = require('../model/EventModel')
+const {User} = require('../model/UserModel')
+
+module.exports.checkLoginInformations = async (req, res, next) => {
+    let body;
+    if(req.body === undefined) {
+        body = req.session.user;
+    } else {
+        body = req.body;
+    }
+    console.log("req.session 1=", req.session);
+    const {userName, userCode } = body;
+    const user = await User.find({userName: userName});
+    if(userCode === user[0].userCode) {
+        req.session.user = userName;
+        console.log('req.session 2= ', req.session);
+        res.send({response: true});
+    } 
+    else {
+        res.status(200).send({response: false});
+    }
+}
 
 module.exports.getEvents = async (req, res) => {
-    const Events = await eventModel.find()
+    const {q} = req.query;
+    const sortCriteria = {}
+    let Events = [];
+    if(q) {
+        q === "beginDate" ? sortCriteria[q] = 1: sortCriteria[q] = -1;      
+        Events = await eventModel.find().sort(sortCriteria)
+    } else {
+        Events = await eventModel.find();
+    }
     res.send(Events);
 }
 

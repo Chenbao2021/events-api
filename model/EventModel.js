@@ -24,6 +24,18 @@ const eventSchema = new mongoose.Schema({
     type: {
         type: String,
         require: true
+    },
+    lieu: {
+        type: String,
+        require: true
+    },
+    codePostale: {
+        type: Number,
+        require: true,
+    },
+    evaluation: {
+        type: Number,
+        require: true,
     }
 })
 
