@@ -17,7 +17,7 @@ module.exports.checkLoginInformations = async (req, res, next) => {
         //     maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
         //     httpOnly: true, // 将Cookie设置为只能通过HTTP协议访问
         //     secure: true, // 仅在HTTPS连接中传输Cookie
-        //     sameSite: 'none', // 允许跨站点访问
+            sameSite: 'none', // 允许跨站点访问
         // });
         req.session.user = body;
         req.session.test2 = 123456;
