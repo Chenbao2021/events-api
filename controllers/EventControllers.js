@@ -8,8 +8,6 @@ module.exports.checkLoginInformations = async (req, res, next) => {
     } else {
         body = req.body;
     }
-    console.log("req.session 1=", req.session);
-    // console.log("req.cookie = ", req);
     const {userName, userCode } = body;
     const user = await User.find({userName: userName});
     if(userCode === user[0].userCode) {
@@ -33,6 +31,7 @@ module.exports.checkLoginInformations = async (req, res, next) => {
             secure: true, 
             sameSite: 'none'
         });
+        req.session.user = body;
         res.send({response: true});
     } 
     else {

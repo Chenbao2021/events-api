@@ -19,62 +19,24 @@ connectDB();
 
 
 const app = express()
-
-app.use(session({
-    secret: "0",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-        secure: true, // 仅在HTTPS连接中传输Cookie
-        sameSite: 'none' // 允许跨站点访问
-      },
-}))
-// app.use(session({
-//     secret: "1",
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-//         // secure: true, // 仅在HTTPS连接中传输Cookie
-//         sameSite: 'none', // 允许跨站点访问
-//       },
-// }))
-// app.use(session({
-//     secret: "2",
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-//         secure: true, // 仅在HTTPS连接中传输Cookie
-//         // sameSite: 'none', // 允许跨站点访问
-//       },
-// }))
-// app.use(session({
-//     secret: "3",
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-//         secure: true, // 仅在HTTPS连接中传输Cookie
-//         sameSite: 'none', // 允许跨站点访问
-//       },
-// }))
-
-app.use(bodyParse.json())
-
-// var corsOption = {
-//     origin: "*",
-//     methods: ["put", "post", "get", "DELETE", "OPTIONS"], 
-// }
-// app.use(cors(corsOption));
-
 app.use(cors({
     credentials: true,
     origin: ["https://yuchenbao.com", "http://localhost:5174"],
-    alloweHeaders: ['Conten-Type', 'Authorization'],
-    Credentials:['true']
 }))
+
+app.use(session({
+    secret: "1234",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60 * 60 * 1000, 
+        secure: true, 
+        sameSite: 'none' 
+      },
+}))
+
+
+app.use(bodyParse.json())
 
 
 // app.use('./save', (req, res, next) => {
