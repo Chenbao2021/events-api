@@ -26,7 +26,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
-        httpOnly: false, // 将Cookie设置为只能通过HTTP协议访问
+        // httpOnly: false, // 将Cookie设置为只能通过HTTP协议访问
         secure: true, // 仅在HTTPS连接中传输Cookie
         sameSite: 'none', // 允许跨站点访问
       },
