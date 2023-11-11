@@ -11,22 +11,7 @@ module.exports.checkLoginInformations = async (req, res, next) => {
     const {userName, userCode } = body;
     const user = await User.find({userName: userName});
     if(userCode === user[0].userCode) {
-        res.cookie('1', '1200', {
-            maxAge: 60 * 60 * 24 * 1000
-            // secure: true, 
-            // sameSite: 'none', 
-        });
-        res.cookie('2', '1200', {
-            maxAge: 60 * 60 * 24 * 1000, 
-            secure: true
-            // sameSite: 'none', 
-        });
-        res.cookie('3', '1200', {
-            maxAge: 60 * 60 * 24 * 1000, 
-            // secure: true, 
-            sameSite: 'none'
-        });
-        res.cookie('4', '1200', {
+        res.cookie('userName', userName, {
             maxAge: 60 * 60 * 24 * 1000, 
             secure: true, 
             sameSite: 'none'
