@@ -26,40 +26,40 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-        // secure: true, // 仅在HTTPS连接中传输Cookie
-        // sameSite: 'none', // 允许跨站点访问
-      },
-}))
-app.use(session({
-    secret: "1",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-        // secure: true, // 仅在HTTPS连接中传输Cookie
-        sameSite: 'none', // 允许跨站点访问
-      },
-}))
-app.use(session({
-    secret: "2",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
-        secure: true, // 仅在HTTPS连接中传输Cookie
-        // sameSite: 'none', // 允许跨站点访问
-      },
-}))
-app.use(session({
-    secret: "3",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
         secure: true, // 仅在HTTPS连接中传输Cookie
         sameSite: 'none', // 允许跨站点访问
       },
 }))
+// app.use(session({
+//     secret: "1",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
+//         // secure: true, // 仅在HTTPS连接中传输Cookie
+//         sameSite: 'none', // 允许跨站点访问
+//       },
+// }))
+// app.use(session({
+//     secret: "2",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
+//         secure: true, // 仅在HTTPS连接中传输Cookie
+//         // sameSite: 'none', // 允许跨站点访问
+//       },
+// }))
+// app.use(session({
+//     secret: "3",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         maxAge: 60 * 60 * 1000, // 设置Cookie的过期时间，单位为毫秒
+//         secure: true, // 仅在HTTPS连接中传输Cookie
+//         sameSite: 'none', // 允许跨站点访问
+//       },
+// }))
 
 app.use(bodyParse.json())
 

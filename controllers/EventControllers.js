@@ -13,15 +13,26 @@ module.exports.checkLoginInformations = async (req, res, next) => {
     const {userName, userCode } = body;
     const user = await User.find({userName: userName});
     if(userCode === user[0].userCode) {
-        res.cookie('test', '1200', {
+        res.cookie('1', '1200', {
             maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
-            httpOnly: false, // 将Cookie设置为只能通过HTTP协议访问
+            // secure: true, // 仅在HTTPS连接中传输Cookie
+            // sameSite: 'none', // 允许跨站点访问
+        });
+        res.cookie('2', '1200', {
+            maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
+            secure: true, // 仅在HTTPS连接中传输Cookie
+            // sameSite: 'none', // 允许跨站点访问
+        });
+        res.cookie('3', '1200', {
+            maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
+            // secure: true, // 仅在HTTPS连接中传输Cookie
+            sameSite: 'none', // 允许跨站点访问
+        });
+        res.cookie('4', '1200', {
+            maxAge: 60 * 60 * 24 * 1000, // 设置Cookie的过期时间，单位为毫秒
             secure: true, // 仅在HTTPS连接中传输Cookie
             sameSite: 'none', // 允许跨站点访问
         });
-        req.session.user = body;
-        req.session.test2 = 123456;
-        console.log('req.session 2= ', req.session);
         res.send({response: true});
     } 
     else {
