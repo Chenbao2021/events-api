@@ -26,12 +26,12 @@ app.use(cors({
 
 app.use(session({
     secret: "1234",
-    resave: false,
+    // resave: false,
     saveUninitialized: true,
     cookie: {
         maxAge: 60 * 60 * 1000, 
         secure: true, 
-        sameSite: 'none' 
+        sameSite: 'none'
       },
 }))
 
